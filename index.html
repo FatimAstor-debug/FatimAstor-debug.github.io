@@ -50,63 +50,82 @@ footer h2{font-size:56px}
 #lb.on{display:flex}#li{max-width:94vw;max-height:74vh;border-radius:10px}
 #lb .n{position:absolute;top:50%;transform:translateY(-50%);background:none;border:0;color:#fff;font-size:44px;padding:12px;cursor:pointer}
 #pv{left:2px}#nx{right:2px}#x{position:absolute;top:calc(6px + env(safe-area-inset-top,0px));right:8px;background:none;border:0;color:#fff;font-size:42px;padding:8px;cursor:pointer}
+.sign{display:flex;align-items:center;justify-content:center;gap:14px;margin:4px 0 14px}
+.sign:before,.sign:after{content:"";width:clamp(34px,13vw,96px);height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
+.sign:after{transform:scaleX(-1)}
+.sign .ar,.sign .en{display:none}
+.sign{position:relative}
+.sign span{display:block}
+.sign .ar,.sign .en{display:block}
+.sign .ar{font:700 clamp(24px,6vw,34px)/1.3 "Aref Ruqaa",serif;color:var(--gold);padding:2px 26px 0;border:1.5px solid var(--gold);border-radius:999px;box-shadow:0 0 0 4px var(--bg),0 0 0 5px var(--gold)}
+.sign .en{position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);font:500 11px Tajawal,sans-serif;letter-spacing:.4em;color:var(--mute);padding-left:.4em}
+.hero .tag{margin-top:26px}
 </style></head><body>
 <header class="hero">
-<h1>فاطِم</h1>
-<p class="tag">فرحتكم لها شكل يفضل معاكم</p>
-<p class="sub">شغل هاند ميد، كل قطعة بتتعمل على اسمكم وتاريخكم</p>
-<div class="btns"><a class="b f" href="#gallery">شوف الشغل</a><a class="b" href="#order">اطلب قطعتك</a></div>
-<span class="real">الصور حقيقية من شغلنا، من غير فلاتر ولا تعديل</span>
+<h1 id="s-brand"></h1>
+<div class="sign" aria-label="هاند ميد"><span class="ar" id="s-sign"></span><span class="en" id="s-signen"></span></div>
+<p class="tag" id="s-tag"></p>
+<p class="sub" id="s-sub"></p>
+<div class="btns"><a class="b f" href="#gallery" id="s-b1"></a><a class="b" href="#order" id="s-b2"></a></div>
+<span class="real" id="s-real"></span>
 </header>
 <div class="mq" aria-hidden="true"><div class="row" id="r1"></div><div class="row r" id="r2"></div></div>
-<section id="gallery"><h2>المعرض</h2><p>دوس على أي صورة تكبّرها</p>
+<section id="gallery"><h2 id="s-gt"></h2><p id="s-gh"></p>
 <div class="chips" id="chips" role="group" aria-label="أقسام المعرض"></div><div id="grid"></div></section>
-<section><h2>الطلب سهل</h2>
-<div class="steps"><div>اختار الشكل اللي عاجبك من المعرض</div><div>املا بياناتك في الفورم تحت</div><div>الطلب بيوصل لفاطم على واتساب وتكلمك تتفقوا على التفاصيل</div></div></section>
-<section id="order"><h2>اطلب قطعتك</h2><p>املا البيانات وهيفتحلك واتساب برسالة جاهزة تبعتها</p>
+<section><h2 id="s-st"></h2>
+<div class="steps" id="s-steps"></div></section>
+<section id="order"><h2 id="s-ot"></h2><p id="s-oh"></p>
 <form id="f" onsubmit="return false">
-<label>اسمك<input id="n" autocomplete="name"></label>
-<label>رقم موبايلك<input id="p" type="tel" inputmode="tel" autocomplete="tel"></label>
-<label>نوع القطعة<select id="t"></select></label>
-<label>الأسماء اللي هتتكتب على القطعة<input id="nm" placeholder="مثلاً: أحمد وسلمى"></label>
-<label>تاريخ المناسبة<input id="d" placeholder="مثلاً: 18/9/2026"></label>
-<label>ألوان أو تفاصيل تانية<textarea id="o"></textarea></label>
+<div id="fields" style="display:grid;gap:12px"></div>
 <p id="err" role="alert"></p>
-<a id="send" class="b f" href="#order" target="_blank" rel="noopener">ابعت الطلب على واتساب</a>
+<a id="send" class="b f" href="#order" target="_blank" rel="noopener"></a>
 </form></section>
-<footer><h2>فاطِم</h2><p>01153571066</p></footer>
-<a id="fl" class="b f" href="#order">اطلب قطعتك</a>
+<footer><h2 id="s-fb"></h2><p id="s-ph"></p></footer>
+<a id="fl" class="b f" href="#order"></a>
 <div id="lb" role="dialog" aria-modal="true" aria-label="عرض الصورة"><button id="x" aria-label="إغلاق">×</button><button class="n" id="pv" aria-label="التالي">›</button><img id="li" alt=""><button class="n" id="nx" aria-label="السابق">‹</button><a id="more" class="b f" href="#order">اطلب قطعة زي دي</a></div>
 <script>
-const REPO='FatimAstor-debug/FatimAstor-debug.github.io',FALL=["images/gifts/01.jpg", "images/gifts/02.jpg", "images/gifts/03.jpg", "images/stands/01.jpg", "images/stands/02.jpg", "images/stands/03.jpg", "images/stands/04.jpg", "images/mirrors/01.jpg", "images/mirrors/02.jpg", "images/mirrors/03.jpg", "images/mirrors/04.jpg", "images/trays/01.jpg", "images/trays/02.jpg", "images/trays/03.jpg", "images/trays/04.jpg", "images/frames/01.jpg", "images/frames/02.jpg", "images/frames/03.jpg"],LAB={mirrors:"مرايات",trays:"صواني ودبل",stands:"ستاندات أكريليك",frames:"براويز وكتب كتاب",gifts:"مواليد وهدايا"},$=id=>document.getElementById(id);
-const grid=$('grid'),chips=$('chips'),sel=$('t'),lb=$('lb'),li=$('li');let vis=[],k=0;
+const DEF={"brand": "فاطِم", "signAr": "هاند ميد", "signEn": "HANDMADE", "tagline": "فرحتكم لها شكل يفضل معاكم", "subtitle": "شغل هاند ميد، كل قطعة بتتعمل على اسمكم وتاريخكم", "realNote": "الصور حقيقية من شغلنا، من غير فلاتر ولا تعديل", "btnGallery": "شوف الشغل", "btnOrder": "اطلب قطعتك", "galleryTitle": "المعرض", "galleryHint": "دوس على أي صورة تكبّرها", "allLabel": "الكل", "stepsTitle": "الطلب سهل", "steps": ["اختار الشكل اللي عاجبك من المعرض", "املا بياناتك في الفورم تحت", "الطلب بيوصل لفاطم على واتساب وتكلمك تتفقوا على التفاصيل"], "orderTitle": "اطلب قطعتك", "orderHint": "املا البيانات وهيفتحلك واتساب برسالة جاهزة تبعتها", "sendButton": "ابعت الطلب على واتساب", "requiredError": "املا الخانات اللي عليها نجمة *", "whatsapp": "201153571066", "phoneText": "01153571066", "messageIntro": "السلام عليكم، عايز أطلب قطعة من شغل فاطِم:", "otherLabel": "حاجة تانية", "categories": {"mirrors": "مرايات", "trays": "صواني ودبل", "stands": "ستاندات أكريليك", "frames": "براويز وكتب كتاب", "gifts": "مواليد وهدايا"}, "fields": [{"label": "اسمك", "type": "text", "required": true}, {"label": "رقم موبايلك", "type": "tel", "required": true}, {"label": "نوع القطعة", "type": "select", "options": "auto"}, {"label": "الأسماء اللي هتتكتب على القطعة", "type": "text", "required": true, "placeholder": "مثلاً: أحمد وسلمى"}, {"label": "تاريخ المناسبة", "type": "text", "placeholder": "مثلاً: 18/9/2026"}, {"label": "ألوان أو تفاصيل تانية", "type": "textarea"}]},$=id=>document.getElementById(id);
+const grid=$('grid'),chips=$('chips'),lb=$('lb'),li=$('li'),REPO='FatimAstor-debug/FatimAstor-debug.github.io';
+let S=DEF,vis=[],k=0,autoSel=null,FIELDS=[];
+async function getSettings(){try{const r=await fetch('settings.json?v='+Date.now());if(!r.ok)throw 0;return Object.assign({},DEF,await r.json())}catch(e){return DEF}}
 async function getList(){
  try{const r=await fetch('https://api.github.com/repos/'+REPO+'/git/trees/main?recursive=1');if(!r.ok)throw 0;const j=await r.json();
   const l=j.tree.filter(t=>t.type==='blob'&&/^images\/[^\/]+\/[^\/]+\.(jpe?g|png|webp)$/i.test(t.path)).map(t=>t.path);
   if(l.length){try{localStorage.setItem('fl',JSON.stringify(l))}catch(e){}return l}}catch(e){}
  try{const c=JSON.parse(localStorage.getItem('fl')||'null');if(c&&c.length)return c}catch(e){}
- return FALL}
-const src=p=>p.split('/').map(encodeURIComponent).join('/'),lab=p=>LAB[p.split('/')[1]]||p.split('/')[1];
-function mix(l){const g={};l.forEach(p=>{const c=p.split('/')[1];(g[c]=g[c]||[]).push(p)});const ks=Object.keys(g),o=[];for(let i=0;ks.some(x=>g[x][i]);i++)ks.forEach(x=>{if(g[x][i])o.push(g[x][i])});return o}
+ return ["images/gifts/01.jpg", "images/gifts/02.jpg", "images/gifts/03.jpg", "images/stands/01.jpg", "images/stands/02.jpg", "images/stands/03.jpg", "images/stands/04.jpg", "images/mirrors/01.jpg", "images/mirrors/02.jpg", "images/mirrors/03.jpg", "images/mirrors/04.jpg", "images/trays/01.jpg", "images/trays/02.jpg", "images/trays/03.jpg", "images/trays/04.jpg", "images/frames/01.jpg", "images/frames/02.jpg", "images/frames/03.jpg"]}
+const set=(id,v)=>{$(id).textContent=v||''};
+function apply(){document.title=S.brand+' | '+S.signAr;
+ set('s-brand',S.brand);set('s-sign',S.signAr);set('s-signen',S.signEn);set('s-tag',S.tagline);set('s-sub',S.subtitle);set('s-real',S.realNote);
+ set('s-b1',S.btnGallery);set('s-b2',S.btnOrder);set('s-gt',S.galleryTitle);set('s-gh',S.galleryHint);set('s-st',S.stepsTitle);
+ set('s-ot',S.orderTitle);set('s-oh',S.orderHint);set('send',S.sendButton);set('s-fb',S.brand);set('s-ph',S.phoneText);set('fl',S.btnOrder);
+ const st=$('s-steps');(S.steps||[]).forEach(x=>{const d=document.createElement('div');d.textContent=x;st.appendChild(d)})}
+const src=p=>p.split('/').map(encodeURIComponent).join('/'),lab=p=>{const f=p.split('/')[1];return (S.categories||{})[f]||f};
+function mix(l){const g={};l.forEach(p=>{const c=p.split('/')[1];(g[c]=g[c]||[]).push(p)});const ord=Object.keys(S.categories||{}),ks=Object.keys(g).sort((a,b)=>{const x=ord.indexOf(a),y=ord.indexOf(b);return (x<0?99:x)-(y<0?99:y)}),o=[];for(let i=0;ks.some(x=>g[x][i]);i++)ks.forEach(x=>{if(g[x][i])o.push(g[x][i])});return o}
 function strip(id,arr){const r=$(id);for(let n=0;n<2;n++)arr.forEach(p=>{const m=document.createElement('img');m.src=src(p);m.alt='';r.appendChild(m)})}
+function mkField(f,labs){const l=document.createElement('label');l.appendChild(document.createTextNode(f.label+(f.required?' *':'')));let e;
+ if(f.type==='select'){e=document.createElement('select');const o=f.options==='auto'?[...labs,S.otherLabel]:(f.options||[]);o.forEach(c=>{const x=document.createElement('option');x.textContent=c;e.appendChild(x)});if(f.options==='auto')autoSel=e}
+ else if(f.type==='textarea')e=document.createElement('textarea');
+ else{e=document.createElement('input');e.type=f.type==='tel'?'tel':'text';if(f.type==='tel')e.inputMode='tel'}
+ if(f.placeholder)e.placeholder=f.placeholder;l.appendChild(e);$('fields').appendChild(l);FIELDS.push([f,e])}
 function build(l){
  const paths=mix(l.slice().sort().reverse()),labs=[...new Set(paths.map(lab))],h=Math.ceil(paths.length/2);
  strip('r1',paths.slice(0,h));strip('r2',paths.slice(h));
- paths.forEach(p=>{const b=document.createElement('button');b.className='c';b.setAttribute('aria-label','افتح الصورة');b.dataset.c=lab(p);const m=document.createElement('img');m.src=src(p);m.alt='قطعة هاند ميد من شغل فاطم، قسم '+lab(p);m.loading='lazy';m.onerror=()=>b.remove();b.appendChild(m);b.onclick=()=>open(b);grid.appendChild(b)});
- ['الكل',...labs].forEach(c=>{const b=document.createElement('button');b.className='chip';b.textContent=c;b.setAttribute('aria-pressed',c==='الكل');b.onclick=()=>{[...chips.children].forEach(x=>x.setAttribute('aria-pressed',x===b));[...grid.children].forEach(x=>x.hidden=!(c==='الكل'||x.dataset.c===c))};chips.appendChild(b)});
- [...labs,'حاجة تانية'].forEach(c=>{const o=document.createElement('option');o.textContent=c;sel.appendChild(o)})}
+ paths.forEach(p=>{const b=document.createElement('button');b.className='c';b.setAttribute('aria-label','افتح الصورة');b.dataset.c=lab(p);const m=document.createElement('img');m.src=src(p);m.alt='قطعة هاند ميد قسم '+lab(p);m.loading='lazy';m.onerror=()=>b.remove();b.appendChild(m);b.onclick=()=>open(b);grid.appendChild(b)});
+ [S.allLabel,...labs].forEach((c,i)=>{const b=document.createElement('button');b.className='chip';b.textContent=c;b.setAttribute('aria-pressed',i===0);b.onclick=()=>{[...chips.children].forEach(x=>x.setAttribute('aria-pressed',x===b));[...grid.children].forEach(x=>x.hidden=!(i===0||x.dataset.c===c))};chips.appendChild(b)});
+ (S.fields||[]).forEach(f=>mkField(f,labs))}
 function open(b){vis=[...grid.children].filter(x=>!x.hidden);k=vis.indexOf(b);show(k)}
 function show(i){k=(i+vis.length)%vis.length;li.src=vis[k].querySelector('img').src;li.dataset.c=vis[k].dataset.c;lb.classList.add('on')}
 const close=()=>lb.classList.remove('on');
 $('x').onclick=close;$('pv').onclick=()=>show(k+1);$('nx').onclick=()=>show(k-1);
 lb.onclick=e=>{if(e.target===lb)close()};
-$('more').onclick=()=>{sel.value=li.dataset.c;close()};
+$('more').onclick=()=>{if(autoSel)autoSel.value=li.dataset.c;close()};
 let sx=null;lb.ontouchstart=e=>sx=e.touches[0].clientX;lb.ontouchend=e=>{if(sx===null)return;const dx=e.changedTouches[0].clientX-sx;sx=null;if(Math.abs(dx)>50)show(dx<0?k+1:k-1)};
 document.addEventListener('keydown',e=>{if(!lb.classList.contains('on'))return;if(e.key==='Escape')close();if(e.key==='ArrowLeft')show(k+1);if(e.key==='ArrowRight')show(k-1)});
-$('send').onclick=e=>{const v=id=>$(id).value.trim();
- if(!v('n')||!v('p')||!v('nm')){e.preventDefault();$('err').textContent='اكتب اسمك ورقم موبايلك والأسماء اللي على القطعة';return}
+$('send').onclick=e=>{
+ if(FIELDS.some(([f,x])=>f.required&&!x.value.trim())){e.preventDefault();$('err').textContent=S.requiredError;return}
  $('err').textContent='';
- const t=['السلام عليكم، عايز أطلب قطعة من شغل فاطِم:','الاسم: '+v('n'),'رقم الموبايل: '+v('p'),'نوع القطعة: '+sel.value,'الأسماء على القطعة: '+v('nm'),'تاريخ المناسبة: '+(v('d')||'لسه مش محدد'),'تفاصيل تانية: '+(v('o')||'مفيش')].join('\n');
- $('send').href='https://wa.me/201153571066?text='+encodeURIComponent(t)};
-getList().then(build);
+ const t=[S.messageIntro,...FIELDS.filter(([f,x])=>x.value.trim()).map(([f,x])=>f.label+': '+x.value.trim())].join('\n');
+ $('send').href='https://wa.me/'+S.whatsapp+'?text='+encodeURIComponent(t)};
+getSettings().then(s=>{S=s;apply();return getList()}).then(build);
 </script></body></html>
